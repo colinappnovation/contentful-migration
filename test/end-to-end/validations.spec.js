@@ -51,7 +51,15 @@ describe('apply validations migration examples', function () {
       omitted: false,
       validations: [{
         unique: true
-      }]
+      },
+      {
+        prohibitRegexp: {
+          pattern: "foo",
+          flags: null
+        },
+        message: "asdf"
+      }
+    ]
     },
     {
       id: 'calories',
@@ -88,6 +96,13 @@ describe('apply validations migration examples', function () {
         name: 'name of the food',
         validations: [{
           unique: true
+        },
+        {
+          prohibitRegexp: {
+            pattern: "foo",
+            flags: null
+          },
+          message: "asdf"
         }]
       }))
       .expect(assert.plans.field.create('calories', {
